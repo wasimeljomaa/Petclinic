@@ -4,12 +4,22 @@ pipeline {
 
     stage('Build') {
       steps {
-        bat "mvn compile"
+        sh "mvn compile"
       }
-    }  
+    } 
+    stage('Test') {
+      steps {
+        sh "mvn test"
+      }
+     post {
+      always {
+        junit '**/TEST*.xml'
+      }
+     }
+  }
      stage('Robot') {
             steps {
-                bat 'robot --variable BROWSER:headlesschrome -d Results Tests'
+                sh 'robot --variable BROWSER:headlesschrome -d Results Tests'
             }
             post {
                 always {
@@ -31,15 +41,6 @@ pipeline {
                 }
             }
      }
-    stage('Test') {
-      steps {
-        bat "mvn test"
-      }
-     post {
-      always {
-        junit '**/TEST*.xml'
-      }
-     }
-  }
+    
  }
 }

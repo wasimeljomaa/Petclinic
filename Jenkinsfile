@@ -5,11 +5,13 @@ pipeline {
     stage('Build Api') {
       steps {
         sh "nohup mvn spring-boot:run &"
+        sleep(20)
       }
     } 
     stage('Build Angular') {
       steps {
         sh "nohup python -m http.server 4200 &"
+        sleep(3)
       }
      
   }

@@ -2,14 +2,14 @@ pipeline {
   agent any 
   stages {
 
-    stage('Build') {
+    stage('Build Api') {
       steps {
-        sh "mvn compile"
+        sh "nohup mvn spring-boot:run &"
       }
     } 
-    stage('Test') {
+    stage('Build Angular') {
       steps {
-        sh "mvn test"
+        sh "nohup python -m http.server 4200 &"
       }
      post {
       always {

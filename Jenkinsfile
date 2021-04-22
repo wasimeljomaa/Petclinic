@@ -11,11 +11,7 @@ pipeline {
       steps {
         sh "nohup python -m http.server 4200 &"
       }
-     post {
-      always {
-        junit '**/TEST*.xml'
-      }
-     }
+     
   }
      stage('Robot') {
             steps {

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.2 (Python 3.9.1 on win32)" generated="20210324 01:37:50.695" rpa="false">
+<suite id="s1" name="VGtest" source="C:\cygwin64\home\robot\Tests\VGtest.robot">
+<test id="s1-t1" name="User can book a car">
+<kw name="Given User on the Infotivcar homepage" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20210324 01:37:51.059" level="INFO">Opening browser 'chrome' to base url 'http://rental30.infotiv.net/'.</msg>
+<status status="PASS" starttime="20210324 01:37:51.059" endtime="20210324 01:37:53.700"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on the current page.</doc>
+<arguments>
+<arg>Infotiv Car Rental</arg>
+</arguments>
+<status status="PASS" starttime="20210324 01:37:53.701" endtime="20210324 01:37:53.729"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:37:51.058" endtime="20210324 01:37:53.729"></status>
+</kw>
+<kw name="Given User on the Infotivcar homepage">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20210324 01:37:53.732" level="INFO">Opening browser 'chrome' to base url 'http://rental30.infotiv.net/'.</msg>
+<status status="PASS" starttime="20210324 01:37:53.731" endtime="20210324 01:37:56.540"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on the current page.</doc>
+<arguments>
+<arg>Infotiv Car Rental</arg>
+</arguments>
+<status status="PASS" starttime="20210324 01:37:56.541" endtime="20210324 01:37:56.566"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:37:53.730" endtime="20210324 01:37:56.567"></status>
+</kw>
+<kw name="When User enters valid email and password">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="email"]</arg>
+<arg>${USERID}</arg>
+</arguments>
+<msg timestamp="20210324 01:37:56.571" level="INFO">Typing text 'abc@info.com' into text field 'xpath://*[@id="email"]'.</msg>
+<status status="PASS" starttime="20210324 01:37:56.570" endtime="20210324 01:37:56.722"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="password"]</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20210324 01:37:56.723" level="INFO">Typing text 'test123' into text field 'xpath://*[@id="password"]'.</msg>
+<status status="PASS" starttime="20210324 01:37:56.722" endtime="20210324 01:37:56.844"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:37:56.569" endtime="20210324 01:37:56.844"></status>
+</kw>
+<kw name="And User clicks the Login button">
+<kw name="Press Keys" library="SeleniumLibrary">
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<arguments>
+<arg>xpath://*[@id="login"]</arg>
+<arg>RETURN</arg>
+</arguments>
+<msg timestamp="20210324 01:37:56.846" level="INFO">Sending key(s) ('RETURN',) to xpath://*[@id="login"] element.</msg>
+<msg timestamp="20210324 01:37:57.871" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20210324 01:37:57.872" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20210324 01:37:56.845" endtime="20210324 01:37:57.887"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:37:56.845" endtime="20210324 01:37:57.887"></status>
+</kw>
+<kw name="Then User is logged in">
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>${SIGNINMESSAGE}</arg>
+</arguments>
+<msg timestamp="20210324 01:37:57.912" level="INFO">Current page contains text 'You are signed in'.</msg>
+<status status="PASS" starttime="20210324 01:37:57.891" endtime="20210324 01:37:57.912"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:37:57.890" endtime="20210324 01:37:57.912"></status>
+</kw>
+<kw name="User enters valid dates to book car">
+<kw name="Press Keys" library="SeleniumLibrary">
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<arguments>
+<arg>xpath://*[@id="reset"]</arg>
+<arg>RETURN</arg>
+</arguments>
+<msg timestamp="20210324 01:37:57.915" level="INFO">Sending key(s) ('RETURN',) to xpath://*[@id="reset"] element.</msg>
+<msg timestamp="20210324 01:37:58.477" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20210324 01:37:58.478" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20210324 01:37:57.914" endtime="20210324 01:37:58.494"></status>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<arguments>
+<arg>result_format=%Y-%m-%d %H:%M:%S.%f</arg>
+</arguments>
+<assign>
+<var>${Current}</var>
+</assign>
+<msg timestamp="20210324 01:37:58.495" level="INFO">${Current} = 2021-03-24 01:37:58.494747</msg>
+<status status="PASS" starttime="20210324 01:37:58.494" endtime="20210324 01:37:58.495"></status>
+</kw>
+<kw name="Add Time To Date" library="DateTime">
+<doc>Adds time to date and returns the resulting date.</doc>
+<arguments>
+<arg>${Current}</arg>
+<arg>2 days</arg>
+</arguments>
+<assign>
+<var>${newdatetime}</var>
+</assign>
+<msg timestamp="20210324 01:37:58.503" level="INFO">${newdatetime} = 2021-03-26 01:37:58.495</msg>
+<status status="PASS" starttime="20210324 01:37:58.495" endtime="20210324 01:37:58.503"></status>
+</kw>
+<kw name="Convert Date" library="DateTime">
+<doc>Converts between supported `date formats`.</doc>
+<arguments>
+<arg>${newdatetime}</arg>
+<arg>result_format=%m%d</arg>
+</arguments>
+<assign>
+<var>${STARTDATE}</var>
+</assign>
+<msg timestamp="20210324 01:37:58.504" level="INFO">${STARTDATE} = 0326</msg>
+<status status="PASS" starttime="20210324 01:37:58.503" endtime="20210324 01:37:58.504"></status>
+</kw>
+<kw name="Add Time To Date" library="DateTime">
+<doc>Adds time to date and returns the resulting date.</doc>
+<arguments>
+<arg>${newdatetime}</arg>
+<arg>7 days</arg>
+</arguments>
+<assign>
+<var>${NEWENDDATE}</var>
+</assign>
+<msg timestamp="20210324 01:37:58.505" level="INFO">${NEWENDDATE} = 2021-04-02 01:37:58.495</msg>
+<status status="PASS" starttime="20210324 01:37:58.505" endtime="20210324 01:37:58.505"></status>
+</kw>
+<kw name="Convert Date" library="DateTime">
+<doc>Converts between supported `date formats`.</doc>
+<arguments>
+<arg>${NEWENDDATE}</arg>
+<arg>result_format=%m%d</arg>
+</arguments>
+<assign>
+<var>${ACTUALENDDATE}</var>
+</assign>
+<msg timestamp="20210324 01:37:58.506" level="INFO">${ACTUALENDDATE} = 0402</msg>
+<status status="PASS" starttime="20210324 01:37:58.506" endtime="20210324 01:37:58.506"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="start"]</arg>
+<arg>${STARTDATE}</arg>
+</arguments>
+<msg timestamp="20210324 01:37:58.507" level="INFO">Typing text '0326' into text field 'xpath://*[@id="start"]'.</msg>
+<status status="PASS" starttime="20210324 01:37:58.507" endtime="20210324 01:37:58.634"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="end"]</arg>
+<arg>${ACTUALENDDATE}</arg>
+</arguments>
+<msg timestamp="20210324 01:37:58.634" level="INFO">Typing text '0402' into text field 'xpath://*[@id="end"]'.</msg>
+<status status="PASS" starttime="20210324 01:37:58.634" endtime="20210324 01:37:58.742"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:37:57.912" endtime="20210324 01:37:58.742"></status>
+</kw>
+<kw name="User clicks the continue button">
+<kw name="Press Keys" library="SeleniumLibrary">
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<arguments>
+<arg>xpath://*[@id="continue"]</arg>
+<arg>RETURN</arg>
+</arguments>
+<msg timestamp="20210324 01:37:58.744" level="INFO">Sending key(s) ('RETURN',) to xpath://*[@id="continue"] element.</msg>
+<msg timestamp="20210324 01:37:59.876" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20210324 01:37:59.876" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20210324 01:37:58.744" endtime="20210324 01:37:59.887"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:37:58.743" endtime="20210324 01:37:59.887"></status>
+</kw>
+<kw name="User selects the Make and Number Of Passengers To Book Car">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="bookQ7pass5"]</arg>
+</arguments>
+<msg timestamp="20210324 01:37:59.888" level="INFO">Clicking button 'xpath://*[@id="bookQ7pass5"]'.</msg>
+<status status="PASS" starttime="20210324 01:37:59.888" endtime="20210324 01:38:00.505"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:37:59.887" endtime="20210324 01:38:00.505"></status>
+</kw>
+<kw name="User enters valid card payment details">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="cardNum"]</arg>
+<arg>2345679832547628</arg>
+</arguments>
+<msg timestamp="20210324 01:38:00.509" level="INFO">Typing text '2345679832547628' into text field 'xpath://*[@id="cardNum"]'.</msg>
+<status status="PASS" starttime="20210324 01:38:00.509" endtime="20210324 01:38:00.731"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="fullName"]</arg>
+<arg>Subhashini</arg>
+</arguments>
+<msg timestamp="20210324 01:38:00.732" level="INFO">Typing text 'Subhashini' into text field 'xpath://*[@id="fullName"]'.</msg>
+<status status="PASS" starttime="20210324 01:38:00.731" endtime="20210324 01:38:00.859"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//*[@id="confirmSelection"]/form/select[1]</arg>
+</arguments>
+<msg timestamp="20210324 01:38:00.860" level="INFO">Clicking element 'xpath=//*[@id="confirmSelection"]/form/select[1]'.</msg>
+<status status="PASS" starttime="20210324 01:38:00.860" endtime="20210324 01:38:00.965"></status>
+</kw>
+<kw name="Select From List By Index" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
+<arguments>
+<arg>xpath=//*[@id="confirmSelection"]/form/select[1]</arg>
+<arg>5</arg>
+</arguments>
+<msg timestamp="20210324 01:38:00.966" level="INFO">Selecting options from selection list 'xpath=//*[@id="confirmSelection"]/form/select[1]' by index 5.</msg>
+<status status="PASS" starttime="20210324 01:38:00.965" endtime="20210324 01:38:01.119"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//*[@id="confirmSelection"]/form/select[2]</arg>
+</arguments>
+<msg timestamp="20210324 01:38:01.120" level="INFO">Clicking element 'xpath=//*[@id="confirmSelection"]/form/select[2]'.</msg>
+<status status="PASS" starttime="20210324 01:38:01.120" endtime="20210324 01:38:01.227"></status>
+</kw>
+<kw name="Select From List By Index" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
+<arguments>
+<arg>xpath=//*[@id="confirmSelection"]/form/select[2]</arg>
+<arg>4</arg>
+</arguments>
+<msg timestamp="20210324 01:38:01.227" level="INFO">Selecting options from selection list 'xpath=//*[@id="confirmSelection"]/form/select[2]' by index 4.</msg>
+<status status="PASS" starttime="20210324 01:38:01.227" endtime="20210324 01:38:01.411"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//*[@id="cvc"]</arg>
+<arg>311</arg>
+</arguments>
+<msg timestamp="20210324 01:38:01.412" level="INFO">Typing text '311' into text field 'xpath=//*[@id="cvc"]'.</msg>
+<status status="PASS" starttime="20210324 01:38:01.412" endtime="20210324 01:38:01.554"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:38:00.507" endtime="20210324 01:38:01.554"></status>
+</kw>
+<kw name="User clicks the Confirm booking">
+<kw name="Press Keys" library="SeleniumLibrary">
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<arguments>
+<arg>xpath=//*[@id="confirm"]</arg>
+<arg>RETURN</arg>
+</arguments>
+<msg timestamp="20210324 01:38:01.556" level="INFO">Sending key(s) ('RETURN',) to xpath=//*[@id="confirm"] element.</msg>
+<msg timestamp="20210324 01:38:02.142" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20210324 01:38:02.143" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20210324 01:38:01.555" endtime="20210324 01:38:02.164"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:38:01.555" endtime="20210324 01:38:02.164"></status>
+</kw>
+<kw name="User Can view bookings on Mypage">
+<kw name="Press Keys" library="SeleniumLibrary">
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<arguments>
+<arg>xpath://*[@id="mypage"]</arg>
+<arg>RETURN</arg>
+</arguments>
+<msg timestamp="20210324 01:38:02.166" level="INFO">Sending key(s) ('RETURN',) to xpath://*[@id="mypage"] element.</msg>
+<msg timestamp="20210324 01:38:02.708" level="INFO">Pressing special key RETURN to element.</msg>
+<msg timestamp="20210324 01:38:02.708" level="INFO">Releasing special key RETURN.</msg>
+<status status="PASS" starttime="20210324 01:38:02.165" endtime="20210324 01:38:02.721"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:38:02.165" endtime="20210324 01:38:02.721"></status>
+</kw>
+<kw name="Clear all bookings">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="mypage"]</arg>
+</arguments>
+<msg timestamp="20210324 01:38:02.724" level="INFO">Clicking button 'xpath://*[@id="mypage"]'.</msg>
+<status status="PASS" starttime="20210324 01:38:02.723" endtime="20210324 01:38:03.172"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>1 seconds</arg>
+</arguments>
+<msg timestamp="20210324 01:38:04.180" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20210324 01:38:03.172" endtime="20210324 01:38:04.180"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on the current page.</doc>
+<arguments>
+<arg>My bookings</arg>
+</arguments>
+<status status="PASS" starttime="20210324 01:38:04.180" endtime="20210324 01:38:04.198"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="unBook1"]</arg>
+</arguments>
+<msg timestamp="20210324 01:38:04.198" level="INFO">Clicking button 'xpath://*[@id="unBook1"]'.</msg>
+<status status="PASS" starttime="20210324 01:38:04.198" endtime="20210324 01:38:04.280"></status>
+</kw>
+<kw name="Handle Alert" library="SeleniumLibrary">
+<doc>Handles the current alert and returns its message.</doc>
+<msg timestamp="20210324 01:38:04.281" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<status status="PASS" starttime="20210324 01:38:04.280" endtime="20210324 01:38:04.286"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="mypage"]</arg>
+</arguments>
+<msg timestamp="20210324 01:38:04.286" level="INFO">Clicking button 'xpath://*[@id="mypage"]'.</msg>
+<status status="PASS" starttime="20210324 01:38:04.286" endtime="20210324 01:38:04.952"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on the current page.</doc>
+<arguments>
+<arg>You have no bookings</arg>
+</arguments>
+<status status="PASS" starttime="20210324 01:38:04.952" endtime="20210324 01:38:04.976"></status>
+</kw>
+<kw name="Verify no bookings left">
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="historyText"]</arg>
+</arguments>
+<assign>
+<var>${actual_text}</var>
+</assign>
+<msg timestamp="20210324 01:38:05.016" level="INFO">${actual_text} = You have no bookings</msg>
+<status status="PASS" starttime="20210324 01:38:04.979" endtime="20210324 01:38:05.016"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>"You have no bookings"</arg>
+<arg>"${actual_text}"</arg>
+</arguments>
+<status status="PASS" starttime="20210324 01:38:05.016" endtime="20210324 01:38:05.016"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>1 seconds</arg>
+</arguments>
+<msg timestamp="20210324 01:38:06.017" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20210324 01:38:05.016" endtime="20210324 01:38:06.017"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:38:04.977" endtime="20210324 01:38:06.017"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:38:02.723" endtime="20210324 01:38:06.017"></status>
+</kw>
+<kw name="Verify no bookings left">
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="historyText"]</arg>
+</arguments>
+<assign>
+<var>${actual_text}</var>
+</assign>
+<msg timestamp="20210324 01:38:06.037" level="INFO">${actual_text} = You have no bookings</msg>
+<status status="PASS" starttime="20210324 01:38:06.018" endtime="20210324 01:38:06.037"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>"You have no bookings"</arg>
+<arg>"${actual_text}"</arg>
+</arguments>
+<status status="PASS" starttime="20210324 01:38:06.037" endtime="20210324 01:38:06.037"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>1 seconds</arg>
+</arguments>
+<msg timestamp="20210324 01:38:07.041" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20210324 01:38:06.037" endtime="20210324 01:38:07.041"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:38:06.018" endtime="20210324 01:38:07.042"></status>
+</kw>
+<kw name="End Web Test">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20210324 01:38:07.044" endtime="20210324 01:38:11.704"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:38:07.043" endtime="20210324 01:38:11.704"></status>
+</kw>
+<kw name="End Web Test" type="teardown">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20210324 01:38:11.708" endtime="20210324 01:38:11.709"></status>
+</kw>
+<status status="PASS" starttime="20210324 01:38:11.706" endtime="20210324 01:38:11.710"></status>
+</kw>
+<doc>This test verifies end to end functionality of book a car</doc>
+<tags>
+<tag>a car</tag>
+<tag>Booking</tag>
+</tags>
+<status status="PASS" starttime="20210324 01:37:51.057" endtime="20210324 01:38:11.710" critical="yes"></status>
+</test>
+<doc>This is some basic infor about the whole test suite</doc>
+<status status="PASS" starttime="20210324 01:37:50.698" endtime="20210324 01:38:11.715"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">a car</stat>
+<stat pass="1" fail="0">Booking</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="VGtest">VGtest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

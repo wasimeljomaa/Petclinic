@@ -20,6 +20,41 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
             </plugin>
+            <plugin>
+                      <groupId>com.github.webdriverextensions</groupId>
+                      <artifactId>webdriverextensions-maven-plugin</artifactId>
+                      <version>3.2.0</version>
+                      <executions>
+                          <execution>
+                              <goals>
+                                  <goal>install-drivers</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                      <configuration>
+                          <installationDirectory>${project.basedir}/Tests/chromedriver.exe</installationDirectory>
+                          <drivers>
+                               <driver>
+                                  <name>chromedriver</name>
+                                  <platform>windows</platform>
+                                  <bit>32</bit>
+                                  <version>74.0.3729.6</version>
+                              </driver>
+                              <driver>
+                                  <name>chromedriver</name>
+                                  <platform>mac</platform>
+                                  <bit>64</bit>
+                                  <version>74.0.3729.6</version>
+                              </driver>
+                              <driver>
+                                  <name>chromedriver</name>
+                                  <platform>linux</platform>
+                                  <bit>64</bit>
+                                  <version>74.0.3729.6</version>
+                              </driver>
+                          </drivers>
+                      </configuration>
+                  </plugin>
         </plugins>
     </build>
 

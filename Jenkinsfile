@@ -17,7 +17,7 @@ pipeline {
   }
      stage('Robot') {
             steps {
-                sh 'cd Tests robot --variable BROWSER:headlesschrome -d Tests/Results Tests'
+                sh 'robot --variable BROWSER:headlesschrome -d Results Tests'
                 
             }
             post {
@@ -26,12 +26,12 @@ pipeline {
                         step(
                             [
                                 $class                  :   'RobotPublisher',
-                                outputPath              :   'Tests/Results',
+                                outputPath              :   'Results',
                                 outputFileName          :   '**/output.xml',
                                 reportFileName          :   '**/report.html',
                                 logFileName             :   '**/log.html',
                                 disableArchiveOutput    :   false,
-                                passThreshold           :   50,
+                                passThreshold           :   100,
                                 unstableThreshold       :   40,
                                 otherFiles              :   "**/*.png,**/*.jpg",
                             ]

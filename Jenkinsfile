@@ -17,7 +17,8 @@ pipeline {
   }
      stage('Robot') {
             steps {
-                sh 'robot --variable BROWSER:headlesschrome -d Results Tests'
+                sh 'cd Tests robot --variable BROWSER:headlesschrome -d Tests/Results Tests'
+                sh 'cd Robotframework-edit robot --variable BROWSER:headlesschrome -d Robotframework-edit/Results Tests'
             }
             post {
                 always {

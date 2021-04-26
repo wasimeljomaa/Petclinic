@@ -1,11 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Checkout') {
-       steps {
-               git 'https://github.com/SubhashiniPenumatsa/Petclinic/'
-          }
-     }
+    
     stage('Build Api') {
       steps {
         sh "nohup mvn spring-boot:run &"

@@ -43,38 +43,10 @@ pipeline {
 
         }
         
-                stage('Robot') {
+     
+           stage('Postman') {
             steps {
-                sh 'cd spring-petclinic-angular/Robotframework robot --variable BROWSER:headlesschrome -d spring-petclinic-angular/Robotframework/Tests/Results spring-petclinic-angular/Robotframework/Tests'
-            }
-            post {
-                always {
-                    script {
-                        step(
-                            [
-                                $class                  :   'RobotPublisher',
-                                outputPath              :   'spring-petclinic-angular/Robotframework/Tests/Results',
-                                outputFileName          :   '**/output.xml',
-                                reportFileName          :   '**/report.html',
-                                logFileName             :   '**/log.html',
-                                disableArchiveOutput    :   false,
-                                passThreshold           :   50,
-                                unstableThreshold       :   40,
-                                otherFiles              :   "**/*.png,**/*.jpg",
-                            ]
-                        )
-                    }
-                }
-            }
-                 
-        }
-        
-
- 
-
-        stage('Postman') {
-            steps {
-              sh 'newman run petclinic.collection -- environment petclinic.environment -- reporters junit'
+              sh 'newman run petclinic.collection.json -- environment petclinic.environment.json -- reporters junit'
             }
             post {
                 always {

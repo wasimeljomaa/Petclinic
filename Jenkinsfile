@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
 
- 
+
 
         stage('Build Rest-API') {
             steps {
@@ -10,7 +10,7 @@ pipeline {
             }
         }
 
- 
+
 
         stage('Build Angular-Front End') {
               steps {
@@ -25,7 +25,7 @@ pipeline {
                 always {
                     junit '**/TEST*.xml'
 
- 
+
 
                      step(
                          [
@@ -39,13 +39,13 @@ pipeline {
                 }
             }
 
- 
+
 
         }
         stage('Robot') {
             steps {
                 sh 'cd spring-petclinic-angular/Tests robot --variable BROWSER:headlesschrome -d spring-petclinic-angular/Tests/Results spring-petclinic-angular/Tests'
-                 
+
             }
             post {
                 always {
@@ -53,7 +53,7 @@ pipeline {
                         step(
                             [
                                 $class                  :   'RobotPublisher',
-                                outputPath              :   'Petclinic/spring-petclinic-angular/Tests/Results',
+                                outputPath              :   'spring-petclinic-angular/Tests/Results',
                                 outputFileName          :   '**/output.xml',
                                 reportFileName          :   '**/report.html',
                                 logFileName             :   '**/log.html',
@@ -68,12 +68,12 @@ pipeline {
             }
      }
 
-        
 
-     
+
+
            stage('Postman') {
             steps {
-              sh 'newman runpetclinic.collection.json -- environment petclinic.environment.json -- reporters junit'
+              sh 'newman run petclinic.collection.json --environment petclinic.environment.json --reporters junit'
             }
             post {
                 always {
@@ -81,11 +81,11 @@ pipeline {
                 }
             }
 
- 
+
 
         }
 
- 
+
 
    }
 }

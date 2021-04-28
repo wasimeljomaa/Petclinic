@@ -61,7 +61,7 @@ pipeline {
       }
       post {
           always {
-              junit 'newman/*.xml'
+              junit 'newman/newman*.xml'
           }
       }
     }

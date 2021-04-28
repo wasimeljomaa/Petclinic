@@ -42,7 +42,35 @@ pipeline {
  
 
         }
-        
+        stage('Robot') {
+            steps {
+                sh 'cd spring-petclinic-angular/Tests robot --variable BROWSER:headlesschrome -d spring-petclinic-angular/Tests/Results spring-petclinic-angular/Tests'
+                  sh 'robot --variable BROWSER:headlesschrome -d spring-petclinic-angular/Tests/Results spring-petclinic-angular/Tests'
+            }
+            post {
+                always {
+                    script {
+                        step(
+                            [
+                                $class                  :   'RobotPublisher',
+                                outputPath              :   'Petclinic/spring-petclinic-angular/Tests/Results',
+                                outputFileName          :   '**/output.xml',
+                                reportFileName          :   '**/report.html',
+                                logFileName             :   '**/log.html',
+                                disableArchiveOutput    :   false,
+                                passThreshold           :   100,
+                                unstableThreshold       :   40,
+                                otherFiles              :   "**/*.png,**/*.jpg",
+                            ]
+                        )
+                    }
+                }
+            }
+     }
+    
+ }
+}
+
         
 
      

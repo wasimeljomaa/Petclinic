@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "9644e885-01ec-44fd-ac5d-45d2b48bf4db",
+		"name": "Testcase , add,uppdate,del pettype",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Get Auth Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"secondAdmin\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"password\");\r",
+									"});\r",
+									"pm.test(\"Check Booking\" , function () {\r",
+									"    pm.expect (jsonData.owners).to.not.equal(null);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"secondAdmin\",\r\n    \"password\": \"password\",\r\n    \"enabled\": true,\r\n    \"roles\": [\r\n    \t{ \"name\" : \"OWNER_ADMIN\" }\r\n\t]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}users",
+							"host": [
+								"{{url}}users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pet Type Rest Controller",
+			"item": [
+				{
+					"name": "Get all pet types",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Check the body is not empty\" , function () {\r",
+									"    pm.expect (jsonData.pettypes).to.not.equal(null);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches pettypes names\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"cat\");\r",
+									"     pm.expect(pm.response.text()).to.include(\"dog\");\r",
+									"      pm.expect(pm.response.text()).to.include(\"lizard\");\r",
+									"       pm.expect(pm.response.text()).to.include(\"snake\");\r",
+									"     pm.expect(pm.response.text()).to.include(\"bird\");\r",
+									"      pm.expect(pm.response.text()).to.include(\"hamster\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}pettypes",
+							"host": [
+								"{{url}}pettypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add pettypes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"\r",
+									"var url = pm.environment.get(\"url\") + \"/pettypes/\" +  pm.globals.get(\"petsTypeID\");\r",
+									"\r",
+									"const getRequest = {\r",
+									"        url: url,\r",
+									"        method: 'GET'\r",
+									"};\r",
+									"\r",
+									"pm.globals.set(\"petsTypeID\", pm.response.json().id);\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Check the body is not empty\" , function () {\r",
+									"    pm.expect (jsonData.pettypes).to.not.equal(null);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code name has string\", () => {\r",
+									"  pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"pm.test(\"if the new pettypes name is lion\", () => {\r",
+									"  const responseJson = pm.response.json();\r",
+									"  pm.expect(responseJson.name).to.eql(\"lion\");\r",
+									"  \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n       \r\n        \"name\": \"lion\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}pettypes",
+							"host": [
+								"{{url}}pettypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pettype with id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.globals.set(\"petsTypeID\", pm.response.json().id);\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check the body is not empty\" , function () {\r",
+									"    pm.expect (jsonData.pettypes).to.not.equal(null);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches pettypes names\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"lion\");\r",
+									"    \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}pettypes/{{petsTypeID}}",
+							"host": [
+								"{{url}}pettypes"
+							],
+							"path": [
+								"{{petsTypeID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uppdate pettype",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n       \"id\": {{petsTypeID}},\r\n        \"name\": \"Tiger\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}pettypes/{{petsTypeID}}",
+							"host": [
+								"{{url}}pettypes"
+							],
+							"path": [
+								"{{petsTypeID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get uppdate petstype",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Check the body is not empty\" , function () {\r",
+									"    pm.expect (jsonData.pettypes).to.not.equal(null);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches pettypes names\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Tiger\");\r",
+									"    \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}pettypes/{{petsTypeID}}",
+							"host": [
+								"{{url}}pettypes"
+							],
+							"path": [
+								"{{petsTypeID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete pettypes with ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}pettypes/{{petsTypeID}}",
+							"host": [
+								"{{url}}pettypes"
+							],
+							"path": [
+								"{{petsTypeID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
